@@ -172,16 +172,28 @@
                         SemanticProperties.Description="Clean up"
                         />
                 </Grid>
-                <VerticalStackLayout 
-                    Spacing="{StaticResource LayoutSpacing}"
-                    BindableLayout.ItemsSource="{Binding Tasks}">
+               <FlexLayout JustifyContent="Start"
+                            Direction="Column"
+                            BindableLayout.ItemsSource="{Binding Tasks}">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <controls:TaskView TaskCompletedCommand="{Binding TaskCompletedCommand, Source={RelativeSource AncestorType={x:Type pageModels:ProjectDetailPageModel}}, x:DataType=pageModels:ProjectDetailPageModel}" />
+                            <controls:TaskView>
+                                <controls:TaskView.Margin>
+                                    <Thickness Left="0"
+                                               Top="0"
+                                               Right="{StaticResource LayoutSpacing}"
+                                               Bottom="{StaticResource LayoutSpacing}"/>
+                                </controls:TaskView.Margin>
+                                <controls:TaskView.TaskCompletedCommand>
+                                    <Binding Path="TaskCompletedCommand"
+                                             Source="{RelativeSource AncestorType={x:Type pageModels:ProjectDetailPageModel}}"
+                                             x:DataType="pageModels:ProjectDetailPageModel"/>
+                                </controls:TaskView.TaskCompletedCommand>
+                            </controls:TaskView>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
+                </FlexLayout>
                 </VerticalStackLayout>
-            </VerticalStackLayout>
         </ScrollView>
 
         <controls:AddButton Command="{Binding AddTaskCommand}" 

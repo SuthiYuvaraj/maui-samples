@@ -72,14 +72,14 @@
                                 Command="{Binding CleanTasksCommand}"
                                 SemanticProperties.Description="Clean tasks" />
                         </Grid>
-                        <VerticalStackLayout Spacing="15"
+                        <FlexLayout JustifyContent="Start" Direction="Column" 
                             BindableLayout.ItemsSource="{Binding Tasks}">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
-                                    <controls:TaskView TaskCompletedCommand="{Binding TaskCompletedCommand, Source={RelativeSource AncestorType={x:Type pageModels:MainPageModel}}, x:DataType=pageModels:MainPageModel}" />
+                                    <controls:TaskView Margin="0,7,8,0" TaskCompletedCommand="{Binding TaskCompletedCommand, Source={RelativeSource AncestorType={x:Type pageModels:MainPageModel}}, x:DataType=pageModels:MainPageModel}" />
                                 </DataTemplate>
                             </BindableLayout.ItemTemplate>
-                        </VerticalStackLayout>
+                        </FlexLayout>
                     </VerticalStackLayout>
                 </ScrollView>
             </pullToRefresh:SfPullToRefresh.PullableContent>
