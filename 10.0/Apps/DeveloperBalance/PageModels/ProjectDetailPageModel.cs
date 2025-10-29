@@ -42,6 +42,9 @@ public partial class ProjectDetailPageModel : ObservableObject, IQueryAttributab
 	private IconData _icon;
 
 	[ObservableProperty]
+	private bool _isCategoryPickerExpanded;
+
+	[ObservableProperty]
 	bool _isBusy;
 
 	[ObservableProperty]
@@ -173,7 +176,19 @@ public partial class ProjectDetailPageModel : ObservableObject, IQueryAttributab
 		{
 			IsBusy = false;
 			CanDelete = !_project.IsNullOrNew();
-            OnPropertyChanged(nameof(HasCompletedTasks));
+			OnPropertyChanged(nameof(HasCompletedTasks));
+		}
+	}
+
+	partial void  OnIsCategoryPickerExpandedChanged(bool value)
+	{
+		if (value)
+		{
+			SemanticScreenReader.Announce("State Expanded");
+		}
+		else
+		{
+			SemanticScreenReader.Announce("State Collapsed");
 		}
 	}
 
