@@ -4,10 +4,12 @@
              xmlns:sf="clr-namespace:Syncfusion.Maui.Toolkit.TextInputLayout;assembly=Syncfusion.Maui.Toolkit"
              xmlns:pageModel="clr-namespace:DeveloperBalance.PageModels"
              xmlns:models="clr-namespace:DeveloperBalance.Models"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:converters="clr-namespace:DeveloperBalance.Converters"
              x:DataType="pageModel:TaskDetailPageModel"
              x:Class="DeveloperBalance.Pages.TaskDetailPage"
              Title="Task">
-
+  
     <ContentPage.ToolbarItems>
         <ToolbarItem
             Text="Delete"
@@ -37,16 +39,15 @@
 
                  <sf:SfTextInputLayout
                     IsVisible="{Binding IsExistingProject}"
-                    SemanticProperties.Description="ComboBox to select Project"
-                    SemanticProperties.Hint="State Collapsed"
                     Hint="Project">
                     <Picker 
+                        x:Name="ProjectPicker"
                         ItemsSource="{Binding Projects}"
                         ItemDisplayBinding="{Binding Name, x:DataType=models:Project}"
                         SelectedItem="{Binding Project}"
                         SelectedIndex="{Binding SelectedProjectIndex}"
-                        SemanticProperties.Description="Project State Expanded"
-                        SemanticProperties.Hint="Which project this task belongs to"/>
+                        IsOpen="{Binding IsProjectPickerExpanded, Mode=TwoWay}"
+                        SemanticProperties.Hint="Use the picker to select which project this task belongs to" />
                 </sf:SfTextInputLayout>
 
                 <Button 
