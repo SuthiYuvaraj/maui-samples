@@ -4,12 +4,10 @@
              xmlns:sf="clr-namespace:Syncfusion.Maui.Toolkit.TextInputLayout;assembly=Syncfusion.Maui.Toolkit"
              xmlns:pageModel="clr-namespace:DeveloperBalance.PageModels"
              xmlns:models="clr-namespace:DeveloperBalance.Models"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             xmlns:converters="clr-namespace:DeveloperBalance.Converters"
              x:DataType="pageModel:TaskDetailPageModel"
              x:Class="DeveloperBalance.Pages.TaskDetailPage"
              Title="Task">
-  
+
     <ContentPage.ToolbarItems>
         <ToolbarItem
             Text="Delete"
